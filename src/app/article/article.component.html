@@ -26,5 +26,12 @@
                 downvote
             </a>
         </li>
+        <li class="item"
+            *ngIf="article.role==='administrator'">
+                <button
+                    class="ui positive right floated button">
+                    Flag
+                </button>
+        </li>
     </ul>
 </div>

@@ -1,12 +1,14 @@
 export class Article {
     title: string;
     link: string;
+    role: string; //added for HW3
     votes: number;
 
     // votes parameter is optional (hence the ?)
-    constructor(title: string, link: string, votes?: number) {
+    constructor(title: string, link: string, role: string, votes?: number) {
         this.title = title;
         this.link = link;
+        this.role = role; //added for HW3
         this.votes = votes || 0;
     }
 
