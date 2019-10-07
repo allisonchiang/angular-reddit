@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { Article} from './article.model';
+import { FlagArticleService } from '../flag-article.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-article',
@@ -9,8 +11,12 @@ import { Article} from './article.model';
 export class ArticleComponent implements OnInit {
   @HostBinding('attr.class') cssClass = 'row';
   @Input() article: Article;
+  flagArticleService: FlagArticleService;
+  appComponent: AppComponent;
 
-  constructor() {
+  constructor(flagArticleService: FlagArticleService, appComponent: AppComponent) {
+    this.flagArticleService = flagArticleService;
+    this.appComponent = appComponent;
   }
 
   voteUp(): boolean {
@@ -20,6 +26,16 @@ export class ArticleComponent implements OnInit {
 
   voteDown(): boolean {
     this.article.voteDown();
+    return false;
+  }
+
+  flagArticle(): boolean {
+    var lowestVote = this.appComponent.getLowestVote();
+    console.log("article.component.ts", lowestVote);
+    // if the flagged article is not the lowest-voted already, then call the service function to downvote it
+    if (this.article.votes != lowestVote) {
+      this.flagArticleService.downvoteArticle(this.article, lowestVote);
+    }
     return false;
   }
 

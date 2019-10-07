@@ -28,7 +28,7 @@
         </li>
         <li class="item"
             *ngIf="article.role==='administrator'">
-                <button
+                <button (click)="flagArticle(article)"
                     class="ui positive right floated button">
                     Flag
                 </button>

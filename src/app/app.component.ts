@@ -29,4 +29,17 @@ export class AppComponent {
   sortedArticles(): Article[] {
     return this.articles.sort((a: Article, b: Article) => b.votes - a.votes);
   }
+
+  getLowestVote(): number {
+    var votesArray: number[] = [];
+    var lowestVote: number;
+    
+    for (var i = 0; i < this.articles.length; i++) {
+      votesArray.push(this.articles[i].votes);
+    }
+
+    lowestVote = Math.min.apply(null, votesArray);
+    console.log("app.component.ts", lowestVote);
+    return lowestVote;
+  }
 }
