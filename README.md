@@ -1,3 +1,7 @@
+# Notes
+Github repo link: https://github.com/allisonchiang/angular-reddit
+Completed all required tasks and extra credit task.
+
 # AngularReddit
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
